@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8164.2" systemVersion="14E46" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="8083.2"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Fojusi_Watch" customModuleProvider="target">
+                    <items>
+                        <group width="136" height="136" alignment="center" verticalAlignment="center" backgroundImage="fiveMin100" id="atV-kx-BSB">
+                            <items>
+                                <group alignment="center" verticalAlignment="center" id="Kc8-O8-X7Z">
+                                    <items>
+                                        <timer alignment="left" id="Jew-ZC-ffh">
+                                            <color key="textColor" red="0.40784313725490196" green="0.73333333333333328" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="font" type="system" pointSize="40"/>
+                                            <calendarUnit key="units" minute="YES" second="YES"/>
+                                        </timer>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                    </items>
+                    <menu key="menu" id="HYs-eC-C9y">
+                        <items>
+                            <menuItem title="Work" image="work" id="le2-1J-UQ8">
+                                <connections>
+                                    <action selector="startWork" destination="AgC-eL-Hgc" id="fUr-kU-WQu"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Break" image="breakTime" id="gHn-CG-fvS" userLabel="Break">
+                                <connections>
+                                    <action selector="startBreak" destination="AgC-eL-Hgc" id="tUc-sB-r0z"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Stop" image="stop" id="vrL-yo-z2Z" userLabel="Stop">
+                                <connections>
+                                    <action selector="stopCurrent" destination="AgC-eL-Hgc" id="Vtc-jG-drU"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Cancel" icon="decline" id="2Tb-RN-Lhg"/>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="backgroundGroup" destination="atV-kx-BSB" id="y9U-ra-RXK"/>
+                        <outlet property="timerInterface" destination="Jew-ZC-ffh" id="215-oB-PmN"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="164" y="217"/>
+        </scene>
+    </scenes>
+</document>
