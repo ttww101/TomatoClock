@@ -43,7 +43,7 @@ final class SettingsViewController: UIViewController {
     let views = ["topLayoutGuide" : topLayoutGuide, "workInputHostView" : settingsView.workInputHostView] as [String: AnyObject]
     view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[topLayoutGuide]-10-[workInputHostView]", options: [], metrics: nil, views: views))
     
-    let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(SettingsViewController.dismissSettings))
+    let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(SettingsViewController.dismissSettings))
     navigationItem.rightBarButtonItem = doneButton
     
     settingsView.setWorkDurationString("\(currentWorkDurationInMinutes) min")
@@ -66,7 +66,7 @@ final class SettingsViewController: UIViewController {
     settingsView.moveMarker(toView: settingsView.workInputHostView)
   }
   
-  func dismissSettings() {
+  @objc func dismissSettings() {
     dismiss(animated: true, completion: nil)
   }
   
@@ -96,7 +96,7 @@ extension SettingsViewController : UIPickerViewDelegate, UIPickerViewDataSource 
     default:
       minutes = breakTimes[row]
     }
-    let attributedTitle = NSAttributedString(string: "\(minutes) min", attributes: [NSForegroundColorAttributeName : UIColor.yellow])
+    let attributedTitle = NSAttributedString(string: "\(minutes) min", attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.yellow]))
     return attributedTitle
   }
   
@@ -117,7 +117,7 @@ extension SettingsViewController : UIPickerViewDelegate, UIPickerViewDataSource 
     UserDefaults.standard.synchronize()
   }
   
-  func moveMarker(sender: UITapGestureRecognizer) {
+  @objc func moveMarker(sender: UITapGestureRecognizer) {
     settingsView.moveMarker(toView: sender.view!)
     settingsView.pickerView.reloadAllComponents()
     
@@ -142,4 +142,15 @@ extension SettingsViewController : UIPickerViewDelegate, UIPickerViewDataSource 
     settingsView.pickerView.selectRow(row, inComponent: 0, animated: false)
   }
   
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
 }

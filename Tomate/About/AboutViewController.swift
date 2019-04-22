@@ -33,28 +33,28 @@ final class AboutViewController: UIViewController {
     
     aboutView.stackView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 20).isActive = true
     
-    let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(AboutViewController.dismissAbout))
+    let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(AboutViewController.dismissAbout))
     navigationItem.rightBarButtonItem = doneButton
   }
   
-  func dismissAbout() {
+  @objc func dismissAbout() {
     dismiss(animated: true, completion: nil)
   }
 }
 
 //MARK: - Button actions
 extension AboutViewController {
-  func openTwitter() {
+  @objc func openTwitter() {
     let safariViewController = SFSafariViewController(url: URL(string: "https://twitter.com/fojusiapp")!)
     present(safariViewController, animated: true, completion: nil)
   }
   
-  func openGithub() {
+  @objc func openGithub() {
     let safariViewController = SFSafariViewController(url: URL(string: "https://github.com/dasdom/Tomate")!)
     present(safariViewController, animated: true, completion: nil)
   }
   
-  func openRating() {
+  @objc func openRating() {
     UIApplication.shared.openURL(URL(string: "http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=923044693")!)
   }
 }

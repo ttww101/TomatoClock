@@ -283,7 +283,8 @@
 				TargetAttributes = {
 					F2AB30B119600A4000D8D989 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = Q6PD97MRX4;
+						DevelopmentTeam = 6253626T3K;
+						LastSwiftMigration = 1010;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -453,15 +454,16 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = NO;
+				DEVELOPMENT_TEAM = 6253626T3K;
 				INFOPLIST_FILE = Tomate/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.dasdom.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Fojusi;
-				PROVISIONING_PROFILE = "9d775ac9-b1d7-44fd-b8db-51d97ed5a8ec";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -475,14 +477,15 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEFINES_MODULE = NO;
+				DEVELOPMENT_TEAM = 6253626T3K;
 				INFOPLIST_FILE = Tomate/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.dasdom.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Fojusi;
-				PROVISIONING_PROFILE = "9d775ac9-b1d7-44fd-b8db-51d97ed5a8ec";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

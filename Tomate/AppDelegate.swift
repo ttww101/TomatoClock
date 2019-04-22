@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var session: WCSession?
     
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     
     customizeAppearance()
     
@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     focusViewController = FocusViewController(nibName: nil, bundle: nil)
     
     if (WCSession.isSupported()) {
-      session = WCSession.default()
+      session = WCSession.default
       session?.delegate = self
       session?.activate()
       focusViewController?.session = session
@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    var shouldPerformAdditionalDelegateHandling = true
     
     // If a shortcut was launched, display its information and take the appropriate action
-    if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+    if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
         
         _ = handleShortcut(shortcutItem.type)
         
@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     if (WCSession.isSupported()) {
-      session = WCSession.default()
+      session = WCSession.default
       session?.delegate = self
       session?.activate()
       focusViewController?.session = session
@@ -104,8 +104,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UINavigationBar.appearance().tintColor = UIColor.yellow
     UINavigationBar.appearance().barTintColor = TimerStyleKit.backgroundColor
     
-    let titleAttributes = [NSForegroundColorAttributeName: TimerStyleKit.timerColor]
-    UINavigationBar.appearance().titleTextAttributes = titleAttributes
+    let titleAttributes = [convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): TimerStyleKit.timerColor]
+    UINavigationBar.appearance().titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary(titleAttributes)
   }
 }
 
@@ -188,3 +188,14 @@ extension AppDelegate {
   }
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}

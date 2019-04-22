@@ -67,23 +67,23 @@ final class FocusViewController: UIViewController {
   }
   
   //MARK: - button actions
-  func startWork(sender: UIButton?) {
+  @objc func startWork(sender: UIButton?) {
     print("startWork")
     guard currentType != .Work else { showAlert(); return }
     startTimer(withType: .Work)
   }
   
-  func startBreak(sender: UIButton?) {
+  @objc func startBreak(sender: UIButton?) {
     guard currentType != .Break else { showAlert(); return }
     startTimer(withType: .Break)
   }
   
-  func startProcrastination(sender: UIButton) {
+  @objc func startProcrastination(sender: UIButton) {
     guard currentType != .Procrastination else { showAlert(); return }
     startTimer(withType: .Procrastination)
   }
   
-  func showSettings() {
+  @objc func showSettings() {
     present(DHNavigationController(rootViewController: SettingsViewController()), animated: true, completion: nil)
   }
   
@@ -93,7 +93,7 @@ final class FocusViewController: UIViewController {
     }
   }
   
-  func showAbout() {
+  @objc func showAbout() {
     present(DHNavigationController(rootViewController: AboutViewController()), animated: true, completion: nil)
   }
   
@@ -192,7 +192,7 @@ extension FocusViewController {
     
     let notificationContent = UNMutableNotificationContent()
     notificationContent.body = "Time for \(typeName) is up!"
-    notificationContent.sound = UNNotificationSound.default()
+    notificationContent.sound = UNNotificationSound.default
     notificationContent.categoryIdentifier = "START_CATEGORY"
     
     localNotification = UNNotificationRequest(identifier: "TimeIsUp", content: notificationContent, trigger: nil)
@@ -209,7 +209,7 @@ extension FocusViewController {
     
   }
   
-  func updateTimeLabel(sender: Timer) {
+  @objc func updateTimeLabel(sender: Timer) {
     
     var totalNumberOfSeconds: CGFloat
     if let type = (sender.userInfo as! NSDictionary!)["timerType"] as? Int {
