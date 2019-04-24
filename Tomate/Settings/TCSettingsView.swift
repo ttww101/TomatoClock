@@ -9,19 +9,19 @@
 import UIKit
 import QuartzCore
 
-final class SettingsView: UIView {
+final class TCSettingsView: UIView {
   
-  private let markerView: UIView
-  let workInputHostView: InputHostView
-  let breakInputHostView: InputHostView
-  private let workPeriodsLabel: UILabel
-  private let workPeriodsStepper: UIStepper
-  let pickerView: UIPickerView
-  var selectedTimerType: TimerType
+  private let myMarkerView: UIView
+  let workAndInputHostView: TCInputHostView
+  let breakAndInputHostView: TCInputHostView
+  private let workAndPeriodsLabel: UILabel
+  private let workAndPeriodsStepper: UIStepper
+  let pickerOfView: UIPickerView
+  var selectedInTimerType: TCTimerType
   
   override init(frame: CGRect) {
     
-    markerView = {
+    myMarkerView = {
       let view = UIView()
       view.layer.cornerRadius = 5
       return view
@@ -33,50 +33,50 @@ final class SettingsView: UIView {
       return view
       }()
     
-    workPeriodsLabel = {
+    workAndPeriodsLabel = {
       let label = UILabel()
       label.translatesAutoresizingMaskIntoConstraints = false
       return label
       }()
-    workPeriodsSettingsHostView.addSubview(workPeriodsLabel)
+    workPeriodsSettingsHostView.addSubview(workAndPeriodsLabel)
     
-    workPeriodsStepper = {
+    workAndPeriodsStepper = {
       let stepper = UIStepper()
       stepper.translatesAutoresizingMaskIntoConstraints = false
       return stepper
       }()
-    workPeriodsSettingsHostView.addSubview(workPeriodsStepper)
+    workPeriodsSettingsHostView.addSubview(workAndPeriodsStepper)
     
     
-    workInputHostView = InputHostView(frame: CGRect.zero)
-    workInputHostView.nameLabel.text = NSLocalizedString("Work duration", comment: "Settings name for the work duration")
-    workInputHostView.tag = 0
+    workAndInputHostView = TCInputHostView(frame: CGRect.zero)
+    workAndInputHostView.timeNameLabel.text = NSLocalizedString("工作時間長", comment: "Settings name for the work duration")
+    workAndInputHostView.tag = 0
     
-    breakInputHostView = InputHostView(frame: CGRect.zero)
-    breakInputHostView.nameLabel.text = NSLocalizedString("Break duration", comment: "Settings name for the break duration")
-    breakInputHostView.tag = 1
+    breakAndInputHostView = TCInputHostView(frame: CGRect.zero)
+    breakAndInputHostView.timeNameLabel.text = NSLocalizedString("休息時間長", comment: "Settings name for the break duration")
+    breakAndInputHostView.tag = 1
     
-    pickerView = {
+    pickerOfView = {
       let pickerView = UIPickerView()
       pickerView.translatesAutoresizingMaskIntoConstraints = false
       pickerView.showsSelectionIndicator = true
       return pickerView
       }()
     
-    selectedTimerType = TimerType.Work
+    selectedInTimerType = TCTimerType.Work
     
     super.init(frame: frame)
     
-    backgroundColor = TimerStyleKit.backgroundColor
-    markerView.backgroundColor = UIColor.yellow
+    backgroundColor = TCTimerStyleKit.backgroundColor
+    myMarkerView.backgroundColor = UIColor.white
     
-    addSubview(markerView)
-    addSubview(workInputHostView)
-    addSubview(breakInputHostView)
-    addSubview(pickerView)
+    addSubview(myMarkerView)
+    addSubview(workAndInputHostView)
+    addSubview(breakAndInputHostView)
+    addSubview(pickerOfView)
     
     let metrics = ["hostHeight" : 40, "hostViewGap" : 10]
-    let views = ["markerView" : markerView, "workHostView" : workInputHostView, "breakHostView" : breakInputHostView, "picker" : pickerView]
+    let views = ["markerView" : myMarkerView, "workHostView" : workAndInputHostView, "breakHostView" : breakAndInputHostView, "picker" : pickerOfView]
     var constraints = [NSLayoutConstraint]()
     
     constraints += NSLayoutConstraint.constraints(withVisualFormat: "|-5-[workHostView]-5-|", options: [], metrics: nil, views: views)
@@ -92,64 +92,64 @@ final class SettingsView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
   
-  func setDurationString(_ string: String) -> TimerType {
-    var timerType = TimerType.Idle
-    if workInputHostView.frame.contains(markerView.center) {
-      setWorkDurationString(string)
-      timerType = TimerType.Work
+  func setDurationString(_ string: String) -> TCTimerType {
+    var timerType = TCTimerType.Idle
+    if workAndInputHostView.frame.contains(myMarkerView.center) {
+      setWorkDurationTimeString(string)
+      timerType = TCTimerType.Work
     } else {
       setBreakDurationString(string)
-      timerType = TimerType.Break
+      timerType = TCTimerType.Break
     }
     return timerType
   }
   
-  func setWorkDurationString(_ string: String) {
-    workInputHostView.durationLabel.text = string
+  func setWorkDurationTimeString(_ string: String) {
+    workAndInputHostView.durationTimeLabel.text = string
   }
   
   func setBreakDurationString(_ string: String) {
-    breakInputHostView.durationLabel.text = string
+    breakAndInputHostView.durationTimeLabel.text = string
   }
   
   func moveMarker(toView view: UIView) {
-    if workInputHostView.frame.contains(view.center) {
-      selectedTimerType = .Work
+    if workAndInputHostView.frame.contains(view.center) {
+      selectedInTimerType = .Work
     } else {
-      selectedTimerType = .Break
+      selectedInTimerType = .Break
     }
     
     UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 5.0, options: [], animations: {
-      self.markerView.frame = view.frame.insetBy(dx: -3, dy: -3)
+      self.myMarkerView.frame = view.frame.insetBy(dx: -3, dy: -3)
       }, completion: nil)
   }
   
-  final class InputHostView: UIView {
-    let nameLabel: UILabel
-    let durationLabel: UILabel
+  final class TCInputHostView: UIView {
+    let timeNameLabel: UILabel
+    let durationTimeLabel: UILabel
     
     override init(frame: CGRect) {
       let makeLabel = { () -> UILabel in
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = TimerStyleKit.timerColor
-        label.text = "-"
-        return label
+        let myLabel = UILabel()
+        myLabel.translatesAutoresizingMaskIntoConstraints = false
+        myLabel.textColor = TCTimerStyleKit.timerColor
+        myLabel.text = "-"
+        return myLabel
       }
       
-      nameLabel = makeLabel()
-      durationLabel = makeLabel()
+      timeNameLabel = makeLabel()
+      durationTimeLabel = makeLabel()
       
       super.init(frame: frame)
       
       translatesAutoresizingMaskIntoConstraints = false
-      backgroundColor = TimerStyleKit.backgroundColor
+      backgroundColor = TCTimerStyleKit.backgroundColor
       layer.cornerRadius = 5
       
-      addSubview(nameLabel)
-      addSubview(durationLabel)
+      addSubview(timeNameLabel)
+      addSubview(durationTimeLabel)
       
-      let views = ["nameLabel" : nameLabel, "durationLabel" : durationLabel]
+      let views = ["nameLabel" : timeNameLabel, "durationLabel" : durationTimeLabel]
       var constraints = [NSLayoutConstraint]()
       
       constraints += NSLayoutConstraint.constraints(withVisualFormat: "|-[nameLabel]-(>=10)-[durationLabel]-|", options: .alignAllFirstBaseline, metrics: nil, views: views)

@@ -9,7 +9,7 @@
 import UIKit
 import QuartzCore
 
-final class TimerView: UIView {
+final class TCTimerView: UIView {
   
   var durationInSeconds: CGFloat = 0.0
   var maxValue: CGFloat = 60.0
@@ -38,7 +38,7 @@ final class TimerView: UIView {
       label.font = UIFont(name: "HelveticaNeue-Thin", size: 80)
       //      label.adjustsFontSizeToFitWidth = true
       label.textAlignment = .center
-      label.textColor = TimerStyleKit.timerColor
+      label.textColor = TCTimerStyleKit.timerColor
       //      label.backgroundColor = UIColor.yellowColor()
       return label
     }()
@@ -211,7 +211,7 @@ final class TimerView: UIView {
     timerShapeLayer.path = timerRingPath.cgPath
     
     timerShapeLayer.fillColor = UIColor.clear.cgColor
-    timerShapeLayer.strokeColor = TimerStyleKit.timerColor.cgColor
+    timerShapeLayer.strokeColor = TCTimerStyleKit.timerColor.cgColor
     timerShapeLayer.lineWidth = 3
   }
   
@@ -220,13 +220,13 @@ final class TimerView: UIView {
     secondsShapeLayer.path = secondsRingPath.cgPath
     
     secondsShapeLayer.fillColor = UIColor.clear.cgColor
-    secondsShapeLayer.strokeColor = TimerStyleKit.timerColor.cgColor
+    secondsShapeLayer.strokeColor = TCTimerStyleKit.timerColor.cgColor
     secondsShapeLayer.lineWidth = 1.0
     //secondsShapeLayer.strokeEnd = CGFloat(secondsPercentage)/60.0
   }
   
   private func settingFullRingStyle() {
-    TimerStyleKit.timerColor.set()
+    TCTimerStyleKit.timerColor.set()
     
     fullRingPath = UIBezierPath(arcCenter: timerCenter, radius: radius+4, startAngle: startAngle, endAngle: endAngle, clockwise: true)
     

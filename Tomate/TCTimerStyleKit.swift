@@ -12,13 +12,13 @@
 
 import UIKit
 
-public class TimerStyleKit : NSObject {
+public class TCTimerStyleKit : NSObject {
   
   //// Cache
   
-  private struct Cache {
-    static var backgroundColor: UIColor = UIColor(red: 0.141, green: 0.149, blue: 0.204, alpha: 1.000)
-    static var timerColor: UIColor = UIColor(red: 0.378, green: 0.670, blue: 0.961, alpha: 1.000)
+  private struct TCCache {
+    static var backgroundColor: UIColor = UIColor(red: 205/255.0, green: 60/255.0, blue: 37/255.0, alpha: 1.000)
+    static var timerColor: UIColor = .white
     static var imageOfSettings: UIImage?
     static var settingsTargets: [Any]?
     static var imageOfInfo: UIImage?
@@ -27,8 +27,8 @@ public class TimerStyleKit : NSObject {
   
   //// Colors
   
-  public class var backgroundColor: UIColor { return Cache.backgroundColor }
-  public class var timerColor: UIColor { return Cache.timerColor }
+  public class var backgroundColor: UIColor { return TCCache.backgroundColor }
+  public class var timerColor: UIColor { return TCCache.timerColor }
   
   //// Drawing Methods
   
@@ -39,7 +39,7 @@ public class TimerStyleKit : NSObject {
     
     //// Shadow Declarations
     let shadow = NSShadow()
-    shadow.shadowColor = TimerStyleKit.timerColor
+    shadow.shadowColor = TCTimerStyleKit.timerColor
     shadow.shadowOffset = CGSize(width: 0.1, height: -0.1)
     shadow.shadowBlurRadius = 4
     
@@ -55,7 +55,7 @@ public class TimerStyleKit : NSObject {
     
     context.saveGState()
     context.setShadow(offset: shadow.shadowOffset, blur: shadow.shadowBlurRadius, color: (shadow.shadowColor as! UIColor).cgColor)
-    TimerStyleKit.timerColor.setStroke()
+    TCTimerStyleKit.timerColor.setStroke()
     timerRingPath.lineWidth = 4
     context.saveGState()
     //CGContextSetLineDash(context, 0, [dashLength, dashGap], 2)
@@ -77,7 +77,7 @@ public class TimerStyleKit : NSObject {
     let timerRingPath = UIBezierPath()
     timerRingPath.addArc(withCenter: CGPoint(x: timerRingRect.midX, y: timerRingRect.midY), radius: timerRingRect.width / 2, startAngle: -90 * CGFloat.pi/180, endAngle: -endAngle * CGFloat.pi/180, clockwise: true)
     
-    TimerStyleKit.timerColor.setStroke()
+    TCTimerStyleKit.timerColor.setStroke()
     timerRingPath.lineWidth = 6
     timerRingPath.stroke()
   }
@@ -296,31 +296,31 @@ public class TimerStyleKit : NSObject {
   //// Generated Images
   
   public class var imageOfSettings: UIImage {
-    if Cache.imageOfSettings != nil {
-      return Cache.imageOfSettings!
+    if TCCache.imageOfSettings != nil {
+      return TCCache.imageOfSettings!
     }
     
     UIGraphicsBeginImageContextWithOptions(CGSize(width: 44, height: 44), false, 0)
-    TimerStyleKit.drawSettings()
+    TCTimerStyleKit.drawSettings()
     
-    Cache.imageOfSettings = UIGraphicsGetImageFromCurrentImageContext()?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+    TCCache.imageOfSettings = UIGraphicsGetImageFromCurrentImageContext()?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
     UIGraphicsEndImageContext()
     
-    return Cache.imageOfSettings!
+    return TCCache.imageOfSettings!
   }
   
   public class var imageOfInfo: UIImage {
-    if Cache.imageOfInfo != nil {
-      return Cache.imageOfInfo!
+    if TCCache.imageOfInfo != nil {
+      return TCCache.imageOfInfo!
     }
     
     UIGraphicsBeginImageContextWithOptions(CGSize(width: 44, height: 44), false, 0)
-    TimerStyleKit.drawInfo()
+    TCTimerStyleKit.drawInfo()
     
-    Cache.imageOfInfo = UIGraphicsGetImageFromCurrentImageContext()?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+    TCCache.imageOfInfo = UIGraphicsGetImageFromCurrentImageContext()?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
     UIGraphicsEndImageContext()
     
-    return Cache.imageOfInfo!
+    return TCCache.imageOfInfo!
   }
   
 }

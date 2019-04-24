@@ -11,13 +11,13 @@ import AudioToolbox
 import WatchConnectivity
 import UserNotifications
 
-final class FocusViewController: UIViewController {
+final class TCFocusViewController: UIViewController {
   
-  fileprivate var focusView: FocusView! { return self.view as! FocusView }
+  fileprivate var focusView: TCFocusView! { return self.view as! TCFocusView }
   fileprivate var timer: Timer?
   fileprivate var endDate: Date?
   fileprivate var localNotification: UNNotificationRequest?
-  fileprivate var currentType = TimerType.Idle
+  fileprivate var currentType = TCTimerType.Idle
 //  private var workPeriods = [NSDate]()
 //  private var numberOfWorkPeriods = 10
   private var totalMinutes = 0
@@ -29,7 +29,7 @@ final class FocusViewController: UIViewController {
 
     //MARK: - view cycle
   override func loadView() {
-    view = FocusView(frame: .zero)
+    view = TCFocusView(frame: .zero)
   }
   
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -39,12 +39,12 @@ final class FocusViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    focusView.workButton.addTarget(self, action: #selector(FocusViewController.startWork(sender:)), for: .touchUpInside)
-    focusView.breakButton.addTarget(self, action: #selector(FocusViewController.startBreak(sender:)),
+    focusView.workTimeBtn.addTarget(self, action: #selector(TCFocusViewController.startYourWork(sender:)), for: .touchUpInside)
+    focusView.breakTimeBtn.addTarget(self, action: #selector(TCFocusViewController.startYourBreak(sender:)),
         for: .touchUpInside)
-    focusView.procrastinateButton.addTarget(self, action: #selector(FocusViewController.startProcrastination(sender:)), for: .touchUpInside)
-    focusView.settingsButton.addTarget(self, action: #selector(FocusViewController.showSettings), for: .touchUpInside)
-    focusView.aboutButton.addTarget(self, action: #selector(FocusViewController.showAbout), for: .touchUpInside)
+    focusView.procrastinateBtn.addTarget(self, action: #selector(TCFocusViewController.startProcrastination(sender:)), for: .touchUpInside)
+    focusView.settingsToBtn.addTarget(self, action: #selector(TCFocusViewController.showSettings), for: .touchUpInside)
+    focusView.aboutToBtn.addTarget(self, action: #selector(TCFocusViewController.showAboutController), for: .touchUpInside)
     
 //    let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "showSettingsFromLongPross:")
 //    focusView.addGestureRecognizer(longPressRecognizer)
@@ -52,39 +52,39 @@ final class FocusViewController: UIViewController {
   
   override func viewDidLayoutSubviews() {
     let minSizeDimension = min(view.frame.size.width, view.frame.size.height)
-    focusView.timerView.timeLabel.font = focusView.timerView.timeLabel.font.withSize((minSizeDimension-2*focusView.sidePadding)*0.9/3.0-10.0)
+    focusView.myTimerView.timeLabel.font = focusView.myTimerView.timeLabel.font.withSize((minSizeDimension-2*focusView.leftSidePadding)*0.9/3.0-10.0)
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
     if timer == nil {
-      focusView.setDuration(0, maxValue: 1)
+      focusView.setTimeDuration(0, maxValue: 1)
     }
     
-    let duration = UserDefaults.standard.integer(forKey: TimerType.Work.rawValue)
+    let duration = UserDefaults.standard.integer(forKey: TCTimerType.Work.rawValue)
     print("duration: \(duration)")
   }
   
   //MARK: - button actions
-  @objc func startWork(sender: UIButton?) {
+  @objc func startYourWork(sender: UIButton?) {
     print("startWork")
     guard currentType != .Work else { showAlert(); return }
-    startTimer(withType: .Work)
+    startDicTimer(withType: .Work)
   }
   
-  @objc func startBreak(sender: UIButton?) {
+  @objc func startYourBreak(sender: UIButton?) {
     guard currentType != .Break else { showAlert(); return }
-    startTimer(withType: .Break)
+    startDicTimer(withType: .Break)
   }
   
   @objc func startProcrastination(sender: UIButton) {
     guard currentType != .Procrastination else { showAlert(); return }
-    startTimer(withType: .Procrastination)
+    startDicTimer(withType: .Procrastination)
   }
   
   @objc func showSettings() {
-    present(DHNavigationController(rootViewController: SettingsViewController()), animated: true, completion: nil)
+    present(TCDHNavigationController(rootViewController: TCSettingsViewController()), animated: true, completion: nil)
   }
   
   func showSettingsFromLongPross(sender: UILongPressGestureRecognizer) {
@@ -93,35 +93,35 @@ final class FocusViewController: UIViewController {
     }
   }
   
-  @objc func showAbout() {
-    present(DHNavigationController(rootViewController: AboutViewController()), animated: true, completion: nil)
+  @objc func showAboutController() {
+    present(TCDHNavigationController(rootViewController: TCAboutViewController()), animated: true, completion: nil)
   }
   
-  func setUIMode(forTimerType timerType: TimerType) {
+  func setUIMode(forTimerType timerType: TCTimerType) {
     UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: {
       switch timerType {
       case .Work:
-        self.set(button: self.focusView.workButton, enabled: true)
-        self.set(button: self.focusView.breakButton, enabled: false)
-        self.set(button: self.focusView.procrastinateButton, enabled: false)
+        self.setBtn(button: self.focusView.workTimeBtn, enabled: true)
+        self.setBtn(button: self.focusView.breakTimeBtn, enabled: false)
+        self.setBtn(button: self.focusView.procrastinateBtn, enabled: false)
       case .Break:
-        self.set(button: self.focusView.workButton, enabled: false)
-        self.set(button: self.focusView.breakButton, enabled: true)
-        self.set(button: self.focusView.procrastinateButton, enabled: false)
+        self.setBtn(button: self.focusView.workTimeBtn, enabled: false)
+        self.setBtn(button: self.focusView.breakTimeBtn, enabled: true)
+        self.setBtn(button: self.focusView.procrastinateBtn, enabled: false)
       case .Procrastination:
-        self.set(button: self.focusView.workButton, enabled: false)
-        self.set(button: self.focusView.breakButton, enabled: false)
-        self.set(button: self.focusView.procrastinateButton, enabled: true)
+        self.setBtn(button: self.focusView.workTimeBtn, enabled: false)
+        self.setBtn(button: self.focusView.breakTimeBtn, enabled: false)
+        self.setBtn(button: self.focusView.procrastinateBtn, enabled: true)
       default:
-        self.set(button: self.focusView.workButton, enabled: true)
-        self.set(button: self.focusView.breakButton, enabled: true)
-        self.set(button: self.focusView.procrastinateButton, enabled: true)
+        self.setBtn(button: self.focusView.workTimeBtn, enabled: true)
+        self.setBtn(button: self.focusView.breakTimeBtn, enabled: true)
+        self.setBtn(button: self.focusView.procrastinateBtn, enabled: true)
       }
       
       }, completion: nil)
   }
   
-  func set(button: UIButton, enabled: Bool) {
+  func setBtn(button: UIButton, enabled: Bool) {
     if enabled {
       button.isEnabled = true
       button.alpha = 1.0
@@ -134,11 +134,11 @@ final class FocusViewController: UIViewController {
 }
 
 //MARK: - timer methods
-extension FocusViewController {
+extension TCFocusViewController {
   
-  func startTimer(withType timerType: TimerType) {
+  func startDicTimer(withType timerType: TCTimerType) {
     
-    focusView.setDuration(0, maxValue: 1)
+    focusView.setTimeDuration(0, maxValue: 1)
     var typeName: String
     switch timerType {
     case .Work:
@@ -186,7 +186,7 @@ extension FocusViewController {
     }
     
     timer?.invalidate()
-    timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(FocusViewController.updateTimeLabel(sender:)), userInfo: ["timerType" : seconds], repeats: true)
+    timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(TCFocusViewController.updateTimeLabel(sender:)), userInfo: ["timerType" : seconds], repeats: true)
     
     UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     
@@ -225,11 +225,11 @@ extension FocusViewController {
       if timeInterval > -1 {
         AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
       }
-      focusView.setDuration(0, maxValue: 1)
+      focusView.setTimeDuration(0, maxValue: 1)
       return
     }
     
-    focusView.setDuration(timeInterval, maxValue: totalNumberOfSeconds)
+    focusView.setTimeDuration(timeInterval, maxValue: totalNumberOfSeconds)
   }
   
   private func resetTimer() {
@@ -291,33 +291,33 @@ extension FocusViewController {
 //}
 
 //MARK: - alert
-private extension FocusViewController {
+private extension TCFocusViewController {
   
   func showAlert() {
-    var alertMessage = NSLocalizedString("Do you want to stop this ", comment: "first part of alert message")
+    var alertMessage = NSLocalizedString("您确定要停止吗", comment: "first part of alert message")
     switch currentType {
     case .Work:
-      alertMessage += NSLocalizedString("work timer?", comment: "second part of alert message")
+      alertMessage += NSLocalizedString("工作?", comment: "second part of alert message")
     case .Break:
-      alertMessage += NSLocalizedString("break timer?", comment: "second part of alert message")
+      alertMessage += NSLocalizedString("休息?", comment: "second part of alert message")
     case .Procrastination:
-      alertMessage += NSLocalizedString("procrastination?", comment: "second part of alert message")
+      alertMessage += NSLocalizedString("推迟?", comment: "second part of alert message")
     default:
       break
     }
-    let alertController = UIAlertController(title: "Stop?", message: alertMessage, preferredStyle: .alert)
+    let alertController = UIAlertController(title: "停止?", message: alertMessage, preferredStyle: .alert)
     
-    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+    let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: { action in
       print("\(action)")
     })
     alertController.addAction(cancelAction)
     
-    let stopAction = UIAlertAction(title: "Stop", style: .default, handler: { action in
+    let stopAction = UIAlertAction(title: "停止", style: .default, handler: { action in
       print("\(action)")
 //      if self.currentType == .Work || self.workPeriods.count > 0 {
 //        self.workPeriods.removeLast()
 //      }
-      self.startTimer(withType: .Idle)
+      self.startDicTimer(withType: .Idle)
     })
     alertController.addAction(stopAction)
     

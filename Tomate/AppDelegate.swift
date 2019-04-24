@@ -13,29 +13,29 @@ import WatchConnectivity
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow? = UIWindow(frame: UIScreen.main.bounds)
-  var focusViewController: FocusViewController?
+  var focusTimeViewController: TCFocusViewController?
   
   let kAlreadyStartedKey = "alreadyStarted"
   let kRegisterNotificationSettings = "kRegisterNotificationSettings"
   
-  var session: WCSession?
+  var timeSession: WCSession?
     
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     
-    customizeAppearance()
+    customizeMyAppearance()
     
-    registerDefaultUserDefaults()
+    registerSafeDefaultUserDefaults()
         
-    focusViewController = FocusViewController(nibName: nil, bundle: nil)
+    focusTimeViewController = TCFocusViewController(nibName: nil, bundle: nil)
     
     if (WCSession.isSupported()) {
-      session = WCSession.default
-      session?.delegate = self
-      session?.activate()
-      focusViewController?.session = session
+      timeSession = WCSession.default
+      timeSession?.delegate = self
+      timeSession?.activate()
+      focusTimeViewController?.session = timeSession
     }
 
-    window!.rootViewController = focusViewController
+    window!.rootViewController = focusTimeViewController
     window!.makeKeyAndVisible()
     
     // Override point for customization after application launch.
@@ -63,17 +63,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     if let identifier = identifier {
       if identifier == "BREAK_ACTION" {
-        focusViewController!.startBreak(sender: nil)
+        focusTimeViewController!.startYourBreak(sender: nil)
       } else if identifier == "WORK_ACTION" {
-        focusViewController!.startWork(sender: nil)
+        focusTimeViewController!.startYourWork(sender: nil)
       }
     }
     
     if (WCSession.isSupported()) {
-      session = WCSession.default
-      session?.delegate = self
-      session?.activate()
-      focusViewController?.session = session
+      timeSession = WCSession.default
+      timeSession?.delegate = self
+      timeSession?.activate()
+      focusTimeViewController?.session = timeSession
     }
     
     completionHandler()
@@ -91,20 +91,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     switch last {
     case "Work":
-      self.focusViewController?.startTimer(withType: .Work)
+      self.focusTimeViewController?.startDicTimer(withType: .Work)
     case "Break":
-      self.focusViewController?.startTimer(withType: .Break)
+      self.focusTimeViewController?.startDicTimer(withType: .Break)
     default:
       return false
     }
     return true
   }
   
-  func customizeAppearance() {
-    UINavigationBar.appearance().tintColor = UIColor.yellow
-    UINavigationBar.appearance().barTintColor = TimerStyleKit.backgroundColor
+  func customizeMyAppearance() {
+    UINavigationBar.appearance().tintColor = UIColor.white
+    UINavigationBar.appearance().barTintColor = TCTimerStyleKit.backgroundColor
     
-    let titleAttributes = [convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): TimerStyleKit.timerColor]
+    let titleAttributes = [convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor): TCTimerStyleKit.timerColor]
     UINavigationBar.appearance().titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary(titleAttributes)
   }
 }
@@ -144,11 +144,11 @@ extension AppDelegate: WCSessionDelegate {
     DispatchQueue.main.async {
       switch actionString {
       case "work":
-        self.focusViewController?.startTimer(withType: .Work)
+        self.focusTimeViewController?.startDicTimer(withType: .Work)
       case "break":
-        self.focusViewController?.startTimer(withType: .Break)
+        self.focusTimeViewController?.startDicTimer(withType: .Break)
       case "stop":
-        self.focusViewController?.startTimer(withType: .Idle)
+        self.focusTimeViewController?.startDicTimer(withType: .Idle)
       default:
         break
       }
@@ -157,8 +157,8 @@ extension AppDelegate: WCSessionDelegate {
 }
 
 extension AppDelegate {
-  func registerDefaultUserDefaults() {
-    let defaultPreferences = [kRegisterNotificationSettings : true, TimerType.Work.rawValue : 1501, TimerType.Break.rawValue : 301, TimerType.Procrastination.rawValue: 601] as [String:Any]
+  func registerSafeDefaultUserDefaults() {
+    let defaultPreferences = [kRegisterNotificationSettings : true, TCTimerType.Work.rawValue : 1501, TCTimerType.Break.rawValue : 301, TCTimerType.Procrastination.rawValue: 601] as [String:Any]
     UserDefaults.standard.register(defaults: defaultPreferences)
     UserDefaults.standard.synchronize()
     

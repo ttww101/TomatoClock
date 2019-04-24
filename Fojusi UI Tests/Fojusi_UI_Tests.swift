@@ -85,21 +85,21 @@ class Fojusi_UI_Tests: XCTestCase {
     
     app.buttons["Settings"].tap()
     
-    app.pickerWheels.element.adjust(toPickerWheelValue: "55 min")
-    XCTAssertTrue(app.staticTexts["55 min"].exists)
-    app.pickerWheels.element.adjust(toPickerWheelValue: "10 min")
-    XCTAssertTrue(app.staticTexts["10 min"].exists)
-    app.pickerWheels.element.adjust(toPickerWheelValue: "25 min")
-    XCTAssertTrue(app.staticTexts["25 min"].exists)
+    app.pickerWheels.element.adjust(toPickerWheelValue: "55 分钟")
+    XCTAssertTrue(app.staticTexts["55 分钟"].exists)
+    app.pickerWheels.element.adjust(toPickerWheelValue: "10 分钟")
+    XCTAssertTrue(app.staticTexts["10 分钟"].exists)
+    app.pickerWheels.element.adjust(toPickerWheelValue: "25 分钟")
+    XCTAssertTrue(app.staticTexts["25 分钟"].exists)
 
     app.staticTexts["Break duration"].tap()
     app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.tap()
-    app.pickerWheels.element.adjust(toPickerWheelValue: "1 min")
-    XCTAssertTrue(app.staticTexts["1 min"].exists)
-    app.pickerWheels.element.adjust(toPickerWheelValue: "10 min")
-    XCTAssertTrue(app.staticTexts["10 min"].exists)
-    app.pickerWheels.element.adjust(toPickerWheelValue: "5 min")
-    XCTAssertTrue(app.staticTexts["5 min"].exists)
+    app.pickerWheels.element.adjust(toPickerWheelValue: "1 分钟")
+    XCTAssertTrue(app.staticTexts["1 分钟"].exists)
+    app.pickerWheels.element.adjust(toPickerWheelValue: "10 分钟")
+    XCTAssertTrue(app.staticTexts["10 分钟"].exists)
+    app.pickerWheels.element.adjust(toPickerWheelValue: "5 分钟")
+    XCTAssertTrue(app.staticTexts["5 分钟"].exists)
 
     app.navigationBars["Settings"].buttons["Done"].tap()
   }

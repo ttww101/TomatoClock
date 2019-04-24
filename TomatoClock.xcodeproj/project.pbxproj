@@ -8,20 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		F20425231961F91100A132D6 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20425221961F91100A132D6 /* Int+Extensions.swift */; };
-		F21D3F4D198D4BB30036D4BA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21D3F4C198D4BB30036D4BA /* SettingsViewController.swift */; };
-		F21D3F50198D4BE30036D4BA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21D3F4F198D4BE30036D4BA /* SettingsView.swift */; };
-		F234623B1960798900AB11A5 /* FocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23462381960798900AB11A5 /* FocusView.swift */; };
-		F234623C1960798900AB11A5 /* FocusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23462391960798900AB11A5 /* FocusViewController.swift */; };
-		F234623D1960798900AB11A5 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F234623A1960798900AB11A5 /* TimerView.swift */; };
-		F273B4C61B56233400CDF081 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273B4C51B56233400CDF081 /* AboutViewController.swift */; };
-		F273B4C91B56235600CDF081 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273B4C81B56235600CDF081 /* AboutView.swift */; };
+		F21D3F4D198D4BB30036D4BA /* TCSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21D3F4C198D4BB30036D4BA /* TCSettingsViewController.swift */; };
+		F21D3F50198D4BE30036D4BA /* TCSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21D3F4F198D4BE30036D4BA /* TCSettingsView.swift */; };
+		F234623B1960798900AB11A5 /* TCFocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23462381960798900AB11A5 /* TCFocusView.swift */; };
+		F234623C1960798900AB11A5 /* TCFocusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23462391960798900AB11A5 /* TCFocusViewController.swift */; };
+		F234623D1960798900AB11A5 /* TCTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F234623A1960798900AB11A5 /* TCTimerView.swift */; };
+		F273B4C61B56233400CDF081 /* TCAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273B4C51B56233400CDF081 /* TCAboutViewController.swift */; };
+		F273B4C91B56235600CDF081 /* TCAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273B4C81B56235600CDF081 /* TCAboutView.swift */; };
 		F2813AE21AB3860A00BFC5EE /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2813AE11AB3860A00BFC5EE /* AppIcon.xcassets */; };
 		F2AB30B819600A4000D8D989 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AB30B719600A4000D8D989 /* AppDelegate.swift */; };
 		F2AB30BA19600A4000D8D989 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2AB30B919600A4000D8D989 /* Images.xcassets */; };
-		F2AB30D4196016B800D8D989 /* TimerStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AB30D3196016B800D8D989 /* TimerStyleKit.swift */; };
-		F2AC01411BDCC68300D50C4E /* DHNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AC01401BDCC68300D50C4E /* DHNavigationController.swift */; };
+		F2AB30D4196016B800D8D989 /* TCTimerStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AB30D3196016B800D8D989 /* TCTimerStyleKit.swift */; };
+		F2AC01411BDCC68300D50C4E /* TCDHNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2AC01401BDCC68300D50C4E /* TCDHNavigationController.swift */; };
 		F2BB35F319F38FB700CD9CA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2BB35F219F38FB700CD9CA5 /* LaunchScreen.storyboard */; };
-		F2EB866B1B2A1E4D009EF689 /* TimerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EB866A1B2A1E4D009EF689 /* TimerType.swift */; };
+		F2EB866B1B2A1E4D009EF689 /* TCTimerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2EB866A1B2A1E4D009EF689 /* TCTimerType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,11 +39,11 @@
 
 /* Begin PBXFileReference section */
 		F20425221961F91100A132D6 /* Int+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
-		F21D3F4C198D4BB30036D4BA /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Tomate/Settings/SettingsViewController.swift; sourceTree = SOURCE_ROOT; };
-		F21D3F4F198D4BE30036D4BA /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = Settings/SettingsView.swift; sourceTree = "<group>"; };
-		F23462381960798900AB11A5 /* FocusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusView.swift; sourceTree = "<group>"; };
-		F23462391960798900AB11A5 /* FocusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusViewController.swift; sourceTree = "<group>"; };
-		F234623A1960798900AB11A5 /* TimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		F21D3F4C198D4BB30036D4BA /* TCSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TCSettingsViewController.swift; path = Tomate/Settings/TCSettingsViewController.swift; sourceTree = SOURCE_ROOT; };
+		F21D3F4F198D4BE30036D4BA /* TCSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TCSettingsView.swift; path = Settings/TCSettingsView.swift; sourceTree = "<group>"; };
+		F23462381960798900AB11A5 /* TCFocusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCFocusView.swift; sourceTree = "<group>"; };
+		F23462391960798900AB11A5 /* TCFocusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCFocusViewController.swift; sourceTree = "<group>"; };
+		F234623A1960798900AB11A5 /* TCTimerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCTimerView.swift; sourceTree = "<group>"; };
 		F25CD26F1B481DFE009495B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		F25CD2731B481DFE009495B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F25CD27D1B481DFE009495B6 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
@@ -54,18 +54,18 @@
 		F25CD2921B4828EC009495B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F25CD2941B482B3E009495B6 /* Fojusi Watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Fojusi Watch Extension.entitlements"; sourceTree = "<group>"; };
 		F25CD2951B482C41009495B6 /* Fojusi Watch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Fojusi Watch.entitlements"; sourceTree = "<group>"; };
-		F273B4C51B56233400CDF081 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewController.swift; path = About/AboutViewController.swift; sourceTree = "<group>"; };
-		F273B4C81B56235600CDF081 /* AboutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		F273B4C51B56233400CDF081 /* TCAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TCAboutViewController.swift; path = About/TCAboutViewController.swift; sourceTree = "<group>"; };
+		F273B4C81B56235600CDF081 /* TCAboutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCAboutView.swift; sourceTree = "<group>"; };
 		F2813AE11AB3860A00BFC5EE /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = SOURCE_ROOT; };
 		F2AB30B219600A4000D8D989 /* Fojusi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fojusi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2AB30B619600A4000D8D989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2AB30B719600A4000D8D989 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2AB30B919600A4000D8D989 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F2AB30C419600A4000D8D989 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F2AB30D3196016B800D8D989 /* TimerStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerStyleKit.swift; sourceTree = "<group>"; };
-		F2AC01401BDCC68300D50C4E /* DHNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DHNavigationController.swift; sourceTree = "<group>"; };
+		F2AB30D3196016B800D8D989 /* TCTimerStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCTimerStyleKit.swift; sourceTree = "<group>"; };
+		F2AC01401BDCC68300D50C4E /* TCDHNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCDHNavigationController.swift; sourceTree = "<group>"; };
 		F2BB35F219F38FB700CD9CA5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		F2EB866A1B2A1E4D009EF689 /* TimerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerType.swift; sourceTree = "<group>"; };
+		F2EB866A1B2A1E4D009EF689 /* TCTimerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCTimerType.swift; sourceTree = "<group>"; };
 		F2FB4E1A198D0BD000B5474E /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		F2FC44011B2CCCCC00851923 /* Fojusi_UI_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fojusi_UI_Tests.swift; sourceTree = "<group>"; };
 		F2FC44031B2CCCCC00851923 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,8 +90,8 @@
 		F21D3F4E198D4BC50036D4BA /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				F21D3F4C198D4BB30036D4BA /* SettingsViewController.swift */,
-				F21D3F4F198D4BE30036D4BA /* SettingsView.swift */,
+				F21D3F4C198D4BB30036D4BA /* TCSettingsViewController.swift */,
+				F21D3F4F198D4BE30036D4BA /* TCSettingsView.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -99,10 +99,10 @@
 		F23462371960798900AB11A5 /* Focus */ = {
 			isa = PBXGroup;
 			children = (
-				F23462391960798900AB11A5 /* FocusViewController.swift */,
-				F23462381960798900AB11A5 /* FocusView.swift */,
-				F234623A1960798900AB11A5 /* TimerView.swift */,
-				F2EB866A1B2A1E4D009EF689 /* TimerType.swift */,
+				F23462391960798900AB11A5 /* TCFocusViewController.swift */,
+				F23462381960798900AB11A5 /* TCFocusView.swift */,
+				F234623A1960798900AB11A5 /* TCTimerView.swift */,
+				F2EB866A1B2A1E4D009EF689 /* TCTimerType.swift */,
 			);
 			path = Focus;
 			sourceTree = "<group>";
@@ -134,8 +134,8 @@
 		F273B4C71B56233B00CDF081 /* About */ = {
 			isa = PBXGroup;
 			children = (
-				F273B4C51B56233400CDF081 /* AboutViewController.swift */,
-				F273B4C81B56235600CDF081 /* AboutView.swift */,
+				F273B4C51B56233400CDF081 /* TCAboutViewController.swift */,
+				F273B4C81B56235600CDF081 /* TCAboutView.swift */,
 			);
 			name = About;
 			sourceTree = "<group>";
@@ -168,7 +168,7 @@
 				F2FF2C841AB0A4D90017BF04 /* Fojusi.entitlements */,
 				F2AB30B719600A4000D8D989 /* AppDelegate.swift */,
 				F20425221961F91100A132D6 /* Int+Extensions.swift */,
-				F2AC01401BDCC68300D50C4E /* DHNavigationController.swift */,
+				F2AC01401BDCC68300D50C4E /* TCDHNavigationController.swift */,
 				F273B4C71B56233B00CDF081 /* About */,
 				F23462371960798900AB11A5 /* Focus */,
 				F21D3F4E198D4BC50036D4BA /* Settings */,
@@ -208,7 +208,7 @@
 		F2AB30D5196016E100D8D989 /* StyleKit */ = {
 			isa = PBXGroup;
 			children = (
-				F2AB30D3196016B800D8D989 /* TimerStyleKit.swift */,
+				F2AB30D3196016B800D8D989 /* TCTimerStyleKit.swift */,
 			);
 			name = StyleKit;
 			sourceTree = "<group>";
@@ -283,8 +283,8 @@
 				TargetAttributes = {
 					F2AB30B119600A4000D8D989 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = 6253626T3K;
 						LastSwiftMigration = 1010;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -293,11 +293,12 @@
 					};
 				};
 			};
-			buildConfigurationList = F2AB30AD19600A4000D8D989 /* Build configuration list for PBXProject "Tomate" */;
+			buildConfigurationList = F2AB30AD19600A4000D8D989 /* Build configuration list for PBXProject "TomatoClock" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -329,18 +330,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F234623D1960798900AB11A5 /* TimerView.swift in Sources */,
+				F234623D1960798900AB11A5 /* TCTimerView.swift in Sources */,
 				F2AB30B819600A4000D8D989 /* AppDelegate.swift in Sources */,
-				F273B4C91B56235600CDF081 /* AboutView.swift in Sources */,
-				F2AC01411BDCC68300D50C4E /* DHNavigationController.swift in Sources */,
-				F2AB30D4196016B800D8D989 /* TimerStyleKit.swift in Sources */,
+				F273B4C91B56235600CDF081 /* TCAboutView.swift in Sources */,
+				F2AC01411BDCC68300D50C4E /* TCDHNavigationController.swift in Sources */,
+				F2AB30D4196016B800D8D989 /* TCTimerStyleKit.swift in Sources */,
 				F20425231961F91100A132D6 /* Int+Extensions.swift in Sources */,
-				F21D3F50198D4BE30036D4BA /* SettingsView.swift in Sources */,
-				F234623B1960798900AB11A5 /* FocusView.swift in Sources */,
-				F2EB866B1B2A1E4D009EF689 /* TimerType.swift in Sources */,
-				F234623C1960798900AB11A5 /* FocusViewController.swift in Sources */,
-				F273B4C61B56233400CDF081 /* AboutViewController.swift in Sources */,
-				F21D3F4D198D4BB30036D4BA /* SettingsViewController.swift in Sources */,
+				F21D3F50198D4BE30036D4BA /* TCSettingsView.swift in Sources */,
+				F234623B1960798900AB11A5 /* TCFocusView.swift in Sources */,
+				F2EB866B1B2A1E4D009EF689 /* TCTimerType.swift in Sources */,
+				F234623C1960798900AB11A5 /* TCFocusViewController.swift in Sources */,
+				F273B4C61B56233400CDF081 /* TCAboutViewController.swift in Sources */,
+				F21D3F4D198D4BB30036D4BA /* TCSettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,18 +454,20 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = 6253626T3K;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Tomate/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.dasdom.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.productivity.tomatoClock;
 				PRODUCT_NAME = Fojusi;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -474,26 +477,28 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = NO;
-				DEVELOPMENT_TEAM = 6253626T3K;
+				DEVELOPMENT_TEAM = 5FCW2VJW37;
 				INFOPLIST_FILE = Tomate/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "de.dasdom.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.productivity.tomatoClock;
 				PRODUCT_NAME = Fojusi;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "tomato Distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F2AB30AD19600A4000D8D989 /* Build configuration list for PBXProject "Tomate" */ = {
+		F2AB30AD19600A4000D8D989 /* Build configuration list for PBXProject "TomatoClock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F2AB30C719600A4000D8D989 /* Debug */,

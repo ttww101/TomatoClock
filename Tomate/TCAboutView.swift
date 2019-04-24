@@ -8,12 +8,12 @@
 
 import UIKit
 
-final class AboutView: UIView {
+final class TCAboutView: UIView {
   
-  let twitterButton: UIButton
-  let githubButton: UIButton
-  let rateButton: UIButton
-  let stackView: UIStackView
+  let twitterToButton: UIButton
+  let githubToButton: UIButton
+  let rateToButton: UIButton
+  let stackToView: UIStackView
   
   override init(frame: CGRect) {
     
@@ -24,38 +24,38 @@ final class AboutView: UIView {
     avatarImageView.clipsToBounds = true
     
     let handleLabel = UILabel(frame: .zero)
-    handleLabel.text = "@fojusiapp"
-    handleLabel.textColor = TimerStyleKit.timerColor
+    handleLabel.text = "效率蕃茄鐘"
+    handleLabel.textColor = TCTimerStyleKit.timerColor
     
     let buttonWithTitle = { (title: String) -> UIButton in
       let button = UIButton(type: .system)
       button.setTitle(title, for: .normal)
       button.layer.borderWidth = 1
-      button.layer.borderColor = UIColor.yellow.cgColor
+      button.layer.borderColor = UIColor.white.cgColor
       button.layer.cornerRadius = 5
       button.widthAnchor.constraint(equalToConstant: 120).isActive = true
       return button
     }
     
-    twitterButton = buttonWithTitle("Twitter")
-    githubButton = buttonWithTitle("Github")
-    rateButton = buttonWithTitle("Rate me")
+    twitterToButton = buttonWithTitle("Twitter")
+    githubToButton = buttonWithTitle("Github")
+    rateToButton = buttonWithTitle("Rate me")
     
-    stackView = UIStackView(arrangedSubviews: [avatarImageView, handleLabel, twitterButton, githubButton, rateButton])
-    stackView.translatesAutoresizingMaskIntoConstraints = false
-    stackView.axis = .vertical
-    stackView.alignment = .center
-    stackView.spacing = 10
+    stackToView = UIStackView(arrangedSubviews: [avatarImageView, handleLabel])
+    stackToView.translatesAutoresizingMaskIntoConstraints = false
+    stackToView.axis = .vertical
+    stackToView.alignment = .center
+    stackToView.spacing = 10
     
     super.init(frame: frame)
     
-    tintColor = .yellow
-    backgroundColor = TimerStyleKit.backgroundColor
+    tintColor = .white
+    backgroundColor = TCTimerStyleKit.backgroundColor
     
-    addSubview(stackView)
+    addSubview(stackToView)
     
     var layoutConstraints = [NSLayoutConstraint]()
-    layoutConstraints.append(stackView.centerXAnchor.constraint(equalTo: centerXAnchor))
+    layoutConstraints.append(stackToView.centerXAnchor.constraint(equalTo: centerXAnchor))
     layoutConstraints.append(avatarImageView.widthAnchor.constraint(equalToConstant: avatarWidth))
     layoutConstraints.append(avatarImageView.heightAnchor.constraint(equalToConstant: avatarWidth))
     NSLayoutConstraint.activate(layoutConstraints)

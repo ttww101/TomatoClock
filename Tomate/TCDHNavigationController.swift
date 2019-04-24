@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DHNavigationController: UINavigationController {
+class TCDHNavigationController: UINavigationController {
   
     override var preferredStatusBarStyle: UIStatusBarStyle {
     return UIStatusBarStyle.lightContent
